@@ -1,0 +1,36 @@
+{
+  "name": "iso-form",
+  "version": "0.0.1",
+  "description": "TBC",
+  "main": "lib/iso-form.js",
+  "scripts": {
+    "test": "mocha spec/*.spec.js -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jasoniangreen/iso-form.git"
+  },
+  "keywords": [
+    "isometric",
+    "forms",
+    "form",
+    "form generator",
+    "form generation",
+    "generation",
+    "generator",
+    "json-schema",
+    "json-schema generator"
+  ],
+  "author": "Jason Green",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jasoniangreen/iso-form/issues"
+  },
+  "homepage": "https://github.com/jasoniangreen/iso-form",
+  "devDependencies": {
+    "browserify": "^13.0.1",
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3",
+    "watch": "^0.18.0"
+  }
+}
