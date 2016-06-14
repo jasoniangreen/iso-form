@@ -28,10 +28,29 @@ describe('IsoForm', function () {
         cachedItem.template.should.be.a('function');
     });
 
+    it('should throw when attempting to overwrite type', function () {
+        should.throw(function () {
+            isoForm.addItemType('test', 'SHOULD FAIL');
+        });
+    });
+
     it('should create build function', function () {
         var form = isoForm.build({ type:'test' });
         form.isValidSchema.should.equal(true);
         form.html.should.equal('TEST');
+    });
+
+    it('should recompile build function when new type added', function () {
+        var form = isoForm.build({ type:'test' });
+        isoForm.addItemType('test2', 'TEST2');
+        var form2 = isoForm.build({ type:'test2' });
+        form2.isValidSchema.should.equal(true);
+        form2.html.should.equal('TEST2');
+    });
+
+    it('should fail validation when unknown type used', function () {
+        var form = isoForm.build({ type:'notatype' });
+        form.isValidSchema.should.equal(false);
     });
 
     it('should support strings and template functions', function () {
