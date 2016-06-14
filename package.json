@@ -1,6 +1,6 @@
 {
   "name": "iso-form",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Generate form html, js, and json-schema all from one master schema.",
   "main": "lib/iso-form.js",
   "scripts": {
