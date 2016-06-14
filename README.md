@@ -7,7 +7,7 @@ var isoForm = new IsoForm();
 
 // To use, register a type with a name and a template function
 isoForm.addItemType('input', function (itemData) {
-    return '<input id="'+itemData.id+'" >';
+    return '<input id="'+itemData.id+'">';
 });
 
 // Or types can be registered with strings instead
@@ -20,7 +20,7 @@ isoForm.build({
     ]
 });
 
-// isoForm.html == '<div><input id="test" ></div>';
+// isoForm.html == '<div><input id="test"></div>';
 
 ```
 
