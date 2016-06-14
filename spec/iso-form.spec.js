@@ -30,14 +30,21 @@ describe('IsoForm', function () {
 
     it('should create build function', function () {
         isoForm.build({ type:'test' });
-        isoForm.html.should.equal('TEST');
         isoForm.validSchema.should.equal(true);
+        isoForm.html.should.equal('TEST');
+    });
+
+    it('should support strings and template functions', function () {
+        isoForm.addItemType('stringtest', 'A STRING TEMPLATE');
+        isoForm.build({ type:'stringtest' });
+        isoForm.validSchema.should.equal(true);
+        isoForm.html.should.equal('A STRING TEMPLATE');
     });
 
     it('should support starting with an array', function () {
         isoForm.build([{ type:'test' }, { type:'test' }]);
-        isoForm.html.should.equal('TESTTEST');
         isoForm.validSchema.should.equal(true);
+        isoForm.html.should.equal('TESTTEST');
     });
 
     it('should support group type', function () {
@@ -52,8 +59,25 @@ describe('IsoForm', function () {
         isoForm.html.should.equal('GROUP START TEST GROUP END');
     });
 
+    it('should be able to pass options to validate function', function () {
+        isoForm.addGroupType('group', groupTemplate, closeGroupTemplate);
+        isoForm.addItemType('testoptions', templateWithOptions);
+        isoForm.build({
+            type:'group',
+            items: [
+                { type: 'testoptions', id: 'woo' }
+            ]
+        });
+        isoForm.validSchema.should.equal(true);
+        isoForm.html.should.equal('GROUP START TESTwoo GROUP END');
+    });
+
     function getFormItemType(n) {
         return isoForm.schema.anyOf[n].allOf;
+    }
+
+    function templateWithOptions(options) {
+        return 'TEST' + options.id;
     }
 
     function templateFunc(data) {
