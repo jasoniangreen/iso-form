@@ -1,7 +1,7 @@
 {
   "name": "iso-form",
-  "version": "0.0.2",
-  "description": "TBC",
+  "version": "0.0.3",
+  "description": "An isometric, schema based form generator that can be used in the client, on the server, or even to pre-compile forms in the build phase. This is the core library that is used to register form types.",
   "main": "lib/iso-form.js",
   "scripts": {
     "test": "mocha spec/*.spec.js -R spec"
