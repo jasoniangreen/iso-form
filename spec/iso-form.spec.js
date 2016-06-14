@@ -29,47 +29,47 @@ describe('IsoForm', function () {
     });
 
     it('should create build function', function () {
-        isoForm.build({ type:'test' });
-        isoForm.validSchema.should.equal(true);
-        isoForm.html.should.equal('TEST');
+        var form = isoForm.build({ type:'test' });
+        form.isValidSchema.should.equal(true);
+        form.html.should.equal('TEST');
     });
 
     it('should support strings and template functions', function () {
         isoForm.addItemType('stringtest', 'A STRING TEMPLATE');
-        isoForm.build({ type:'stringtest' });
-        isoForm.validSchema.should.equal(true);
-        isoForm.html.should.equal('A STRING TEMPLATE');
+        var form = isoForm.build({ type:'stringtest' });
+        form.isValidSchema.should.equal(true);
+        form.html.should.equal('A STRING TEMPLATE');
     });
 
     it('should support starting with an array', function () {
-        isoForm.build([{ type:'test' }, { type:'test' }]);
-        isoForm.validSchema.should.equal(true);
-        isoForm.html.should.equal('TESTTEST');
+        var form = isoForm.build([{ type:'test' }, { type:'test' }]);
+        form.isValidSchema.should.equal(true);
+        form.html.should.equal('TESTTEST');
     });
 
     it('should support group type', function () {
         isoForm.addGroupType('group', groupTemplate, closeGroupTemplate);
-        isoForm.build({
+        var form = isoForm.build({
             type:'group',
             items: [
                 { type: 'test' }
             ]
         });
-        isoForm.validSchema.should.equal(true);
-        isoForm.html.should.equal('GROUP START TEST GROUP END');
+        form.isValidSchema.should.equal(true);
+        form.html.should.equal('GROUP START TEST GROUP END');
     });
 
     it('should be able to pass options to validate function', function () {
         isoForm.addGroupType('group', groupTemplate, closeGroupTemplate);
         isoForm.addItemType('testoptions', templateWithOptions);
-        isoForm.build({
+        var form = isoForm.build({
             type:'group',
             items: [
                 { type: 'testoptions', id: 'woo' }
             ]
         });
-        isoForm.validSchema.should.equal(true);
-        isoForm.html.should.equal('GROUP START TESTwoo GROUP END');
+        form.isValidSchema.should.equal(true);
+        form.html.should.equal('GROUP START TESTwoo GROUP END');
     });
 
     function getFormItemType(n) {

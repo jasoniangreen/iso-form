@@ -13,14 +13,15 @@ isoForm.addItemType('input', function (itemData) {
 // Or types can be registered with strings instead
 isoForm.addGroupType('group', '<div>', '</div>');
 
-isoForm.build({
+var form = isoForm.build({
     type:'group',
     items: [
         { type: 'input', id: 'test' }
     ]
 });
 
-// isoForm.html == '<div><input id="test"></div>';
+// form.isValidSchema == true;
+// form.html == '<div><input id="test"></div>';
 
 ```
 
