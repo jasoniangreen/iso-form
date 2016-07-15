@@ -78,7 +78,7 @@ describe('IsoForm', function () {
         form.html.should.equal('GROUP START TEST GROUP END');
     });
 
-    it('should be able to pass options to validate function', function () {
+    it('should be able to pass options to build function', function () {
         isoForm.addGroupType('group', groupTemplate, closeGroupTemplate);
         isoForm.addItemType('testoptions', templateWithOptions);
         var form = isoForm.build({
@@ -89,6 +89,19 @@ describe('IsoForm', function () {
         });
         form.isValidSchema.should.equal(true);
         form.html.should.equal('GROUP START TESTwoo GROUP END');
+    });
+
+    it('should allow a context in build function', function () {
+        var context = { current: {} };
+        isoForm.addItemType('testcontext', function (options) {
+            this.current.customProperty = true;
+        });
+
+        var form = isoForm.build({
+            type: 'testcontext', id: 'woo'
+        }, context);
+        form.isValidSchema.should.equal(true);
+        context.current.customProperty.should.equal(true);
     });
 
     function getFormItemType(n) {

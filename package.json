@@ -4,7 +4,8 @@
   "description": "Generate form html, js, and json-schema all from one master schema.",
   "main": "lib/iso-form.js",
   "scripts": {
-    "test": "mocha spec/*.spec.js -R spec"
+    "test-cov": "jshint lib/ && NODE_ENV=test istanbul cover -x 'test' node_modules/mocha/bin/_mocha -- --recursive --reporter=spec",
+    "test": "jshint lib/ &&  NODE_ENV=test mocha test/*.spec.js -R spec"
   },
   "repository": {
     "type": "git",
@@ -28,8 +29,11 @@
   },
   "homepage": "https://github.com/jasoniangreen/iso-form",
   "devDependencies": {
+    "async": "^2.0.0",
     "browserify": "^13.0.1",
     "chai": "^3.5.0",
+    "istanbul": "^0.4.4",
+    "jshint": "^2.9.2",
     "mocha": "^2.5.3",
     "watch": "^0.18.0"
   },

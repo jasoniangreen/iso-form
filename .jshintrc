@@ -1,0 +1,30 @@
+{
+  "bitwise": true,
+  "browser": true,
+  "browserify": true,
+  "devel": true,
+  "eqnull": true,
+  "expr": true,
+  "immed": true,
+  "indent": 2,
+  "laxbreak": true,
+  "loopfunc": true,
+  "maxlen": false,
+  "mocha": true,
+  "newcap": false,
+  "noarg": true,
+  "noempty": true,
+  "validthis": true,
+  "nonew": true,
+  "strict": false,
+  "sub": true,
+  "trailing": true,
+  "undef": true,
+  "unused": true,
+  "globals":{
+    "ActiveXObject": true,
+    "videojs": true,
+    "assert": true,
+    "sinon": true
+  }
+}
